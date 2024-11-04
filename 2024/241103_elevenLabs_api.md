@@ -98,3 +98,25 @@ PermissionError: [Errno 13] Permission denied: 'C:\\Users\\1\\AppData\\Local\\Te
 
 만들어진 voice파일은 경로에 저장되었으나, 바로 실행은 관리자 권한이 필요함
 
+천튜터님:
+
+Eleven Labs 를 사용하는 실습(ChatGPT와 ElevenLabs 실습, 음성 생성과 번역을 활용한 번역 서비스 만들기)을 진행하실 때 생성된 오디오 파일에 대한 권한 문제(Permission denied)로 재생이 안되는 경우가 있습니다
+
+`해결 방법 : pydub.playback의 play 라이브러리 사용하는 대신 playsound 라이브러리 사용`
+
+1. 설치
+`pip install playsound `
+2. 코드변경
+```
+# 오디오 파일을 재생하는 코드 부분을 아래와 같이 변경해주세요
+# 기존 코드
+ # Pydub을 통해 mp3 파일을 불러와서 재생
+audio = AudioSegment.from_mp3(audio_path)
+play(audio)  # Pydub의 play() 함수 사용
+
+---- 변경 후
+import playsound
+
+# 오디오를 재생합니다.
+playsound.playsound(audio_path)
+```
